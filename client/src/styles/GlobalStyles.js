@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { COLORS } from './colors';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -12,8 +13,9 @@ const GlobalStyles = createGlobalStyle`
   }
   body{
     margin: 0;
-    font-family: sans-serif;
-  }
+    font-family: 'Montserrat', sans-serif;
+    background-color: ${COLORS['main-bg']};
+    color: ${COLORS['main-color']}}
   a{
     text-decoration: none;
     color: inherit;
@@ -27,3 +29,4 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export { GlobalStyles };
+
