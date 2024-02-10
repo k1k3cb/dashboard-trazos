@@ -12,14 +12,14 @@ const LibraryScheme = mongoose.Schema(
             type: String,
             required: true,
             trim: true
-            // la idea es qeu cada vez que se añada uno se guarde en BD?
+            
         },
         editorial: {
             type: String
         },
 
         format: {
-            type: String,
+            type: Array,
             required: true,
             // digital, audio, video, papel
 
@@ -30,7 +30,7 @@ const LibraryScheme = mongoose.Schema(
 
 
         }
-        // poner un cod autoincremental?
+        
 
 
 

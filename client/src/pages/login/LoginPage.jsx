@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Input from '../../components/input/Input';
+import Input from '../../components/UI/input/Input';
 import {
 	StyledContainer,
 	StyledForgot,

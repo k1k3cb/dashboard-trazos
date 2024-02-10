@@ -1,15 +1,18 @@
 import { v4 } from 'uuid';
 
-// poner permisos de los roles?
-//  path de forma dinamica?
-
 export const SIDENAV_ITEMS = [
+	{
+		id: v4(),
+		title: 'Dashboard',
+		icon: '',
+		path: '/dashboard',
+		subMenus: []
+	},
 	{
 		id: v4(),
 		title: 'usuarios',
 		icon: '',
 		path: '',
-		submenu: true,
 		subMenus: [
 			{
 				name: 'create',
@@ -18,31 +21,42 @@ export const SIDENAV_ITEMS = [
 			}
 		]
 	},
-
 	{
-		title: 'Dashboard',
-		links: [
+		id: v4(),
+		title: 'Biblioteca',
+		icon: '',
+		path: '',
+		subMenus: [
 			{
-				name: 'ecommerce',
-				icon: ''
+				name: 'create',
+				icon: '',
+				path: ''
 			}
 		]
 	},
-
 	{
-		title: 'Pages',
-		links: [
+		id: v4(),
+		title: 'Inventario',
+		icon: '',
+		path: '',
+		subMenus: [
 			{
-				name: 'orders',
-				icon: ''
-			},
+				name: 'create',
+				icon: '',
+				path: ''
+			}
+		]
+	},
+	{
+		id: v4(),
+		title: 'Tareas',
+		icon: '',
+		path: '',
+		subMenus: [
 			{
-				name: 'employees',
-				icon: ''
-			},
-			{
-				name: 'customers',
-				icon: ''
+				name: 'create',
+				icon: '',
+				path: ''
 			}
 		]
 	}

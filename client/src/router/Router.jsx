@@ -3,6 +3,8 @@ import LoginPage from '../pages/login/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
 
 const Router = () => {
+
+
 	return (
 		<Routes>
 			<Route path='/' element={<LoginPage />} />
