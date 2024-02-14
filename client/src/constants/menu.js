@@ -4,17 +4,18 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Dashboard',
-		icon: '',
+		icon: 'assets/icons/OutlinedDashBoard.svg',
 		path: '/dashboard',
 		subMenus: []
 	},
 	{
 		id: v4(),
-		title: 'usuarios',
-		icon: '',
+		title: 'Usuarios',
+		icon: 'assets/icons/User.svg',
 		path: '',
 		subMenus: [
 			{
+				id: v4(),
 				name: 'create',
 				icon: '',
 				path: ''
@@ -24,11 +25,25 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Biblioteca',
-		icon: '',
+		icon: '/assets/icons/Library.svg',
 		path: '',
 		subMenus: [
 			{
-				name: 'create',
+				id: v4(),
+				name: 'new item',
+				icon: '',
+				path: '/dashboard/library/new-item'
+			},
+			{
+				id: v4(),
+				name: 'List',
+				icon: '',
+				path: ''
+			}
+			,
+			{
+				id: v4(),
+				name: 'new Category',
 				icon: '',
 				path: ''
 			}
@@ -37,10 +52,25 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Inventario',
-		icon: '',
+		icon: 'assets/icons/Inventory.svg',
 		path: '',
 		subMenus: [
 			{
+				id: v4(),
+				name: 'create',
+				icon: '',
+				path: ''
+			}
+		]
+	},
+	{
+		id: v4(),
+		title: 'Calendario',
+		icon: 'assets/icons/Calendar.svg',
+		path: '',
+		subMenus: [
+			{
+				id: v4(),
 				name: 'create',
 				icon: '',
 				path: ''
@@ -50,10 +80,11 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Tareas',
-		icon: '',
+		icon: '/assets/icons/Tasks.svg',
 		path: '',
 		subMenus: [
 			{
+				id: v4(),
 				name: 'create',
 				icon: '',
 				path: ''

@@ -1,8 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import Footer from '../components/footer/Footer';
 import NavBar from '../components/nav-bar/NavBar';
 import SideBar from '../components/side-bar/SideBar';
-import { StyledFlex } from './styles';
+import { StyledContentSpace, StyledFlex } from './styles';
 
 const Layout = () => {
 	return (
@@ -10,9 +9,10 @@ const Layout = () => {
 			<NavBar />
 			<StyledFlex>
 				<SideBar />
-				<Outlet />
+				<StyledContentSpace>
+					<Outlet />
+				</StyledContentSpace>
 			</StyledFlex>
-			<Footer />
 		</>
 	);
 };

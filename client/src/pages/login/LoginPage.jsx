@@ -30,7 +30,7 @@ const LoginPage = () => {
 				</StyledLeftContent>
 
 				<StyledRightContent>
-					<StyledImg src='public/assets/images/strong_goat_logo.webp' alt='' />
+					<StyledImg src='assets/images/strong_goat_logo.webp' alt='' />
 				</StyledRightContent>
 			</StyledLoginCard>
 		</StyledContainer>
