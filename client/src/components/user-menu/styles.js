@@ -6,8 +6,8 @@ export const StyledHeader = styled.header`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-inline: 1.25rem;
-    filter: drop-shadow(0px 1px 0px #e2e8f0);
+	padding: 0.5rem 1.25rem;
+	filter: drop-shadow(0px 1px 0px #e2e8f0);
 `;
 
 export const StyledInfo = styled.div`

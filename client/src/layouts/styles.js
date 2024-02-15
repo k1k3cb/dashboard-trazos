@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { SIZE } from '../styles/sizes';
 
 export const StyledFlex = styled.div`
 	display: flex;
-	height: 100vh;
+	height: calc(100vh - ${SIZE.header});
 `;
 
 export const StyledContentSpace = styled.div`

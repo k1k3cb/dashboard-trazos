@@ -1,10 +1,11 @@
 border color active input log in
-iconos menu desaparecen
+
 altura main
 poner main en cada componente?
 pagina-carpeta library
 
-library routes server libraryRoutes.get('library/:id???', libraryController.getItemById);
 
-pretier en el  server?
-arrays en scheme server o como const en client
+
+
+
+

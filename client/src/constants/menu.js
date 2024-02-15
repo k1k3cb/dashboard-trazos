@@ -4,14 +4,14 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Dashboard',
-		icon: 'assets/icons/OutlinedDashBoard.svg',
+		icon: '/assets/icons/OutlinedDashBoard.svg',
 		path: '/dashboard',
 		subMenus: []
 	},
 	{
 		id: v4(),
 		title: 'Usuarios',
-		icon: 'assets/icons/User.svg',
+		icon: '/assets/icons/User.svg',
 		path: '',
 		subMenus: [
 			{
@@ -38,9 +38,8 @@ export const SIDENAV_ITEMS = [
 				id: v4(),
 				name: 'List',
 				icon: '',
-				path: ''
-			}
-			,
+				path: '/dashboard/library/items'
+			},
 			{
 				id: v4(),
 				name: 'new Category',
@@ -52,7 +51,7 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Inventario',
-		icon: 'assets/icons/Inventory.svg',
+		icon: '/assets/icons/Inventory.svg',
 		path: '',
 		subMenus: [
 			{
@@ -66,7 +65,7 @@ export const SIDENAV_ITEMS = [
 	{
 		id: v4(),
 		title: 'Calendario',
-		icon: 'assets/icons/Calendar.svg',
+		icon: '/assets/icons/Calendar.svg',
 		path: '',
 		subMenus: [
 			{

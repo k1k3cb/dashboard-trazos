@@ -1,38 +1,51 @@
 import { Link } from 'react-router-dom';
 import { SIDENAV_ITEMS } from '../../constants/menu';
-import { StyledAside, StyledLinkTitle, StyledTitleDiv } from './styles';
+import {
+	StyleTitle,
+	StyledAside,
+	StyledLi,
+	StyledLinkTitle,
+	StyledSubMenuUl,
+	StyledTitleDiv
+} from './styles';
 
 const SideBar = () => {
 	return (
 		<StyledAside>
 			<ul>
 				{SIDENAV_ITEMS.map(item => (
-					<li key={item.id}>
-						<StyledLinkTitle to={item.path} href={item.path}>
-							<span>
+					<StyledLi key={item.id}>
+						{item.subMenus.length > 0 ? (
+							<>
+								<StyleTitle to={item.path}>
+									<img src={item.icon} alt='' />
+									<StyledTitleDiv>
+										<span>{item.title}</span>
+										<img
+											src='/assets/icons/chevron-down.svg'
+											alt='chevron-down icon'
+										/>
+									</StyledTitleDiv>
+								</StyleTitle>
+								<StyledSubMenuUl>
+									{item.subMenus.map(subMenu => (
+										<li key={subMenu.id}>
+											<Link to={subMenu.path}>
+												<span>{subMenu.name}</span>
+											</Link>
+										</li>
+									))}
+								</StyledSubMenuUl>
+							</>
+						) : (
+							<StyledLinkTitle to={item.path}>
 								<img src={item.icon} alt='' />
-							</span>
-							<StyledTitleDiv>
-								<span>{item.title}</span>
-								{item.subMenus.length > 0 && (
-									<i>
-										<img src='assets/icons/chevron-down.svg' alt='' />
-									</i>
-								)}
-							</StyledTitleDiv>
-						</StyledLinkTitle>
-						{item.subMenus.length > 0 && (
-							<ul>
-								{item.subMenus.map(subMenu => (
-									<li key={subMenu.id}>
-										<Link to={subMenu.path}>
-											<span>{subMenu.name}</span>
-										</Link>
-									</li>
-								))}
-							</ul>
+								<StyledTitleDiv>
+									<span>{item.title}</span>
+								</StyledTitleDiv>
+							</StyledLinkTitle>
 						)}
-					</li>
+					</StyledLi>
 				))}
 			</ul>
 		</StyledAside>

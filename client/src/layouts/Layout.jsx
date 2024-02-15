@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import NavBar from '../components/nav-bar/NavBar';
+
 import SideBar from '../components/side-bar/SideBar';
+import UserMenu from '../components/user-menu/UserMenu';
 import { StyledContentSpace, StyledFlex } from './styles';
 
 const Layout = () => {
 	return (
 		<>
-			<NavBar />
+			<UserMenu />
 			<StyledFlex>
 				<SideBar />
 				<StyledContentSpace>

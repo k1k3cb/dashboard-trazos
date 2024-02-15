@@ -1,7 +1,6 @@
-export const USER_ROLES={
-    SUPER_ADMIN: 1,
-    ADMIN: 2,
-    LIBRARY_EDITOR: 3,
-    STUDENT: 4,
-
-}
+export const USER_ROLES = {
+	ADMIN: 1,
+	LIBRARY_EDITOR: 2,
+	INVENTARY_EDITOR: 3,
+	STUDENT: 4
+};

@@ -9,16 +9,13 @@ import {
 	StyledUserSpan
 } from './styles';
 
-const NavBar = () => {
+const UserMenu = () => {
 	return (
 		<StyledHeader>
 			<h2>LOGO</h2>
 			<StyledInfo>
-				<i></i>
-				<i>
-					<img src='assets/icons/DarkMode.svg' alt='' />
-				</i>
-				<i></i>
+				<img src='assets/icons/DarkMode.svg' alt='' />
+
 				<StyledUserInfo>
 					<StyledUserNameRole>
 						<StyledUserName>Mark Lenders</StyledUserName>
@@ -26,9 +23,7 @@ const NavBar = () => {
 					</StyledUserNameRole>
 					<StyledUserSpan>
 						<StyledImg src='/assets/images/user-01.png' alt='' />
-						<i>
-							<img src='/assets/icons/ArrowDropDownLine.svg' alt='' />
-						</i>
+						<img src='/assets/icons/ArrowDropDownLine.svg' alt='' />
 					</StyledUserSpan>
 				</StyledUserInfo>
 			</StyledInfo>
@@ -36,4 +31,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default UserMenu;

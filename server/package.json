@@ -1,30 +1,32 @@
 {
-  "name": "plantilla-node",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon src/app.js",
-    "server": "node src/app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cloudinary": "^2.0.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.1",
-    "express": "^4.18.2",
-    "mongoose": "^8.1.1",
-    "uuid": "^9.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.3",
-    "standard": "^17.1.0"
-  },
-  "eslintConfig": {
-    "extends": "standard",
-    "rules": {
-      "semi": "off"
-    }
-  }
+	"name": "plantilla-node",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon src/app.js",
+		"server": "node src/app.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"cloudinary": "^2.0.1",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.1",
+		"express": "^4.18.2",
+		"mongoose": "^8.1.1",
+		"uuid": "^9.0.1"
+    
+	},
+	"devDependencies": {"eslint": "8.56.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-config-standard": "17.1.0",
+		"eslint-plugin-import": "2.29.1",
+		"eslint-plugin-n": "16.6.2",
+		
+		"nodemon": "^3.0.3",
+		"prettier": "3.2.4"
+		
+    
+	}
 }

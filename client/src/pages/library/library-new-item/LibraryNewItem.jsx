@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import CardBody from '../../../components/UI/card-body/CardBody';
+import { FORM_VALIDATIONS } from '../../../constants/form-validations';
 
 const LibraryNewItem = () => {
 	const {
@@ -12,40 +14,37 @@ const LibraryNewItem = () => {
 	return (
 		<main>
 			<h3>New Item</h3>
-			<form
-				onSubmit={handleSubmit(data => formSubmit(data, navigate, setUsers))}
-			>
-				<div>
-					<label htmlFor='name'>Título:</label>
-					<input
-						type='text'
-						name='title'
-						id='title'
-						{...register('title', { required: true })}
-					/>
-				</div>
-				<div>
-					<label htmlFor='email'>Email:</label>
-					<input
-						type='email'
-						name='email'
-						id='email'
-						{...register('email', { required: true })}
-					/>
-				</div>
+			<CardBody>
+				<form
+					onSubmit={handleSubmit(data => formSubmit(data, navigate, setUsers))}
+				>
+					<div>
+						<label htmlFor='title'>Título:</label>
+						<input
+							type='text'
+							name='title'
+							id='title'
+							{...register('title', {
+								...FORM_VALIDATIONS.NAME,
+								required: true
+							})}
+						/>
+					</div>
+				
 
-				<div>
-					<label htmlFor='username'>Username:</label>
-					<input
-						type='text'
-						name='username'
-						id='username'
-						{...register('username', { required: true })}
-					/>
-				</div>
+					<div>
+						<label htmlFor='username'>Username:</label>
+						<input
+							type='text'
+							name='username'
+							id='username'
+							{...register('username', { required: true })}
+						/>
+					</div>
 
-				<button type='submit'>Crear</button>
-			</form>
+					<button type='submit'>Crear</button>
+				</form>
+			</CardBody>
 		</main>
 	);
 };

@@ -16,6 +16,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     background-color: ${COLORS['main-bg']};
     color: ${COLORS['main-color']}}
+
+    h1,h2,h3,h4,h5,h6{
+      margin: 0;
+    }
   a{
     text-decoration: none;
     color: inherit;
@@ -29,4 +33,3 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export { GlobalStyles };
-
