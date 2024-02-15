@@ -1,7 +1,8 @@
-export const LIBRARY_ITEMS_FORMAT={
-   PAPER: 1,
-    DIGITAL: 2,
-    AUDIO: 3,
-    VIDEO: 4,
+import { v4 } from 'uuid';
 
-}
+export const LIBRARY_ITEMS_FORMATS = [
+	{ id: v4(), name: 'Papel' },
+	{ id: v4(), name: 'Digital' },
+	{ id: v4(), name: 'Audio' },
+	{ id: v4(), name: 'Video' }
+];

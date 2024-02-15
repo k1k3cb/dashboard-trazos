@@ -22,16 +22,15 @@ const LibraryScheme = mongoose.Schema(
 		},
 
 		format: {
-			type: String,
-			required: true,
-			formats: Array
+			type: Array,
+			required: true
 		},
 		difficulty: {
-			type: String,
-			levels: Array
+			type: String
 		},
 		mainImage: {
-			type: String
+			type: String,
+			default: 'public/assets/images/no-image-available.svg'
 		},
 		galleryImages: {
 			type: Array

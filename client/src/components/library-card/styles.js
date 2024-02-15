@@ -24,6 +24,7 @@ export const StyledImg = styled.img`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	object-position: left;
 `;
 export const StyledAuthorDiv = styled.div`
 	text-align: end;
@@ -34,12 +35,10 @@ export const StyledDesc = styled.p`
 `;
 
 export const StyledCategory = styled.span`
-background-color: gray;
-padding: 2px;
-margin-right: 2px;
-font-size: 12px;
-color: white;
-border-radius: 5px;
-
-
+	background-color: gray;
+	padding: 2px;
+	margin-right: 2px;
+	font-size: 12px;
+	color: white;
+	border-radius: 5px;
 `;

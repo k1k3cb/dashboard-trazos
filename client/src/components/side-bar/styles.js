@@ -10,7 +10,7 @@ export const StyledAside = styled.aside`
 	color: white;
 `;
 
-export const StyleTitle = styled.li`
+export const StyleTitle = styled.span`
 	display: flex;
 	gap: 1rem;
 `;

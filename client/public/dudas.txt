@@ -1,8 +1,8 @@
 border color active input log in
 
-altura main
-poner main en cada componente?
-pagina-carpeta library
+li/span en aside menu
+
+importaciones format /../../../../../../
 
 
 
