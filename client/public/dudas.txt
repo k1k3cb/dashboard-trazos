@@ -11,6 +11,9 @@ userController.createUser  datos pasados
 uso nickname o email para el login
 
 
+links buttons ItemDetails
 
+
+diferencia getAllData getData de la api
 
 

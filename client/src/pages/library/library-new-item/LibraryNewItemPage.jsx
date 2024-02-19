@@ -2,7 +2,7 @@ import CardBody from '../../../components/UI/card-body/CardBody';
 
 import LibraryCreateForm from '../../../components/library-create-form/LibraryCreateForm';
 
-const LibraryNewItem = () => {
+const LibraryNewItemPage = () => {
 	return (
 		<>
 			<h3>New Item</h3>
@@ -13,4 +13,4 @@ const LibraryNewItem = () => {
 	);
 };
 
-export default LibraryNewItem;
+export default LibraryNewItemPage;

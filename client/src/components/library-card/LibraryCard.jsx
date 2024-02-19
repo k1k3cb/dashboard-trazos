@@ -10,8 +10,8 @@ import {
 } from './styles';
 
 const LibraryCard = ({ ...item }) => {
-	const { title, author, arrangement, mainImage, formats } = item;
-	console.log('formats', formats);
+	const { _id, title, author, arrangement, mainImage, formats } = item;
+	console.log('item', item);
 	return (
 		<StyledCard>
 			<StyledLeftColumn>
@@ -28,12 +28,13 @@ const LibraryCard = ({ ...item }) => {
 				<StyledDesc>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sit.
 				</StyledDesc>
+				<div>
+					{formats.map(format => (
+						<StyledCategory key={format.id}>{format.name}</StyledCategory>
+					))}
+				</div>
 
-				{formats.map(format => (
-					<StyledCategory key={format.id}>{format.name}</StyledCategory>
-				))}
-
-				<Link to=''>Ver</Link>
+				<Link to={`/dashboard/library/${_id}`}>Ver</Link>
 			</StyledRightColumn>
 		</StyledCard>
 	);

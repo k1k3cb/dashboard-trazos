@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import Dashboard from '../pages/dashboard/Dashboard';
-import LibraryNewItem from '../pages/library/library-new-item/LibraryNewItem';
-import LibraryItemList from '../pages/library/items-list/LibraryItemList';
+import ItemDetailsPage from '../pages/library/item-details/ItemDetailsPage';
+import ItemEditPage from '../pages/library/item-edit/ItemEditPage';
+import LibraryItemListPage from '../pages/library/items-list/LibraryItemListPage';
+import LibraryNewItemPage from '../pages/library/library-new-item/LibraryNewItemPage';
 import NewUser from '../pages/users/new-user/NewUser';
+import UserListPage from '../pages/users/users-list/UserListPage';
 
 // const user = false;
 const ProtectedRoute = () => {
@@ -13,18 +16,18 @@ const ProtectedRoute = () => {
 		<Routes>
 			<Route path='/dashboard' element={<Layout />}>
 				<Route index element={<Dashboard />} />
+				<Route path='/dashboard/library' element={<LibraryItemListPage />} />
 				<Route
 					path='/dashboard/library/new-item'
-					element={<LibraryNewItem />}
+					element={<LibraryNewItemPage />}
 				/>
+				<Route path='/dashboard/library/:id' element={<ItemDetailsPage />} />
 				<Route
-					path='/dashboard/library'
-					element={<LibraryItemList />}
+					path='/dashboard/library/edit-item/:id'
+					element={<ItemEditPage />}
 				/>
-					<Route
-					path='/dashboard/users/new-user'
-					element={<NewUser />}
-				/>
+				<Route path='/dashboard/users' element={<UserListPage />} />
+				<Route path='/dashboard/users/new-user' element={<NewUser />} />
 			</Route>
 		</Routes>
 	);

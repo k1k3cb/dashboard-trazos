@@ -32,27 +32,22 @@ userController.getUserById = async (req, res) => {
 
 // Crear un usuario nuevo
 userController.createUser = async (req, res) => {
-	const {
-		name,
-        email,
-        role
-		
-	} = req.body;
-	if (!name || !email || !role) {
+	const { name, email, roles } = req.body;
+	if (!name || !email || !roles) {
 		return res.status(400).send({ error: 'Bad request.' });
 	}
 
 	try {
 		const newUser = new UserModel({
 			name,
-        email,
-        role
+			email,
+			roles
 		});
 
 		await newUser.save();
 
-		const allItems = await UserModel.find();
-		return res.status(200).send(allItems);
+		const allUsers  = await UserModel.find();
+		return res.status(200).send(allUsers );
 	} catch (err) {
 		return res.status(500).send({ error: 'Error reading database.' + err });
 	}
@@ -113,7 +108,7 @@ userController.uploadImage = async (req, res) => {
 			public_id: nameForCloudinary
 		});
 
-		// fsPromises.unlink(uploadPath);
+		fsPromises.unlink(uploadPath);
 
 		res.status(201).send({ url: restultUpload.secure_url });
 	} catch (error) {

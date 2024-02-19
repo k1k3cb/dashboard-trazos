@@ -34,30 +34,32 @@ libraryController.getItemById = async (req, res) => {
 libraryController.createItem = async (req, res) => {
 	// subir imágenes
 	console.log(req.files);
-	// try {
-	// 	if (!req.files || Object.keys(req.files).length === 0) {
-	// 		return res.status(400).send({ error: 'No files were uploaded.' });
-	// 	}
+	try {
+		if (!req.files || Object.keys(req.files).length === 0) {
+			return res.status(400).send({ error: 'No files were uploaded.' });
+		}
 
-	// 	const photo = req.files.photo;
+		const photo = req.files.mainImage;
 
-	// 	const uploadPath = path.join(__dirname, '../uploads', photo.name);
+		const uploadPath = path.join(__dirname, '../uploads', photo.name);
 
-	// 	await photo.mv(uploadPath);
+		await photo.mv(uploadPath);
 
-	// 	const nameForCloudinary = path.parse(photo.name).name;
+		const nameForCloudinary = path.parse(photo.name).name;
 
-	// 	const restultUpload = await cloudinary.uploader.upload(uploadPath, {
-	// 		public_id: nameForCloudinary
-	// 	});
+		const restultUpload = await cloudinary.uploader.upload(uploadPath, {
+			public_id: nameForCloudinary
+		});
 
-	// 	fsPromises.unlink(uploadPath);
+		console.log('restultUpload',restultUpload)
 
-	// 	res.status(201).send({ url: restultUpload.secure_url });
-	// } catch (error) {
-	// 	console.error('Error uploading file:', error);
-	// 	res.status(500).send(error.message || 'Internal Server Error');
-	// }
+		fsPromises.unlink(uploadPath);
+
+		res.status(201).send({ url: restultUpload.secure_url });
+	} catch (error) {
+		console.error('Error uploading file:', error);
+		res.status(500).send(error.message || 'Internal Server Error');
+	}
 
 	//crear item
 	const {
@@ -82,7 +84,7 @@ libraryController.createItem = async (req, res) => {
 			editorial,
 			formats,
 			difficulty,
-			mainImage,
+			mainImage:restultUpload,
 			galleryImages
 		});
 

@@ -14,7 +14,7 @@ const LibraryCreateForm = () => {
 		console.log('acceptedFiles', acceptedFiles);
 	}, []);
 	const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-		useDropzone({ onDrop, maxSize: 5 * 1024 * 1024 });
+		useDropzone({ onDrop, maxSize: 5 * 1024 * 1024, maxFiles: 1 });
 
 	const {
 		handleSubmit,
@@ -22,9 +22,7 @@ const LibraryCreateForm = () => {
 		watch
 
 		// formState: { errors }
-	} = useForm({
-		defaultValues: { mainImage: 'public/assets/images/no-image-available.svg' }
-	});
+	} = useForm({});
 	const navigate = useNavigate();
 
 	return (
@@ -74,7 +72,13 @@ const LibraryCreateForm = () => {
 					{isDragActive ? (
 						<p>Drop the files here ...</p>
 					) : (
-						<p>Selecciona o arrastra un archivo aquí</p>
+						<>
+							<p>Selecciona o arrastra un archivo aquí</p>
+							<em>
+								(1 files are the maximum number of files you can drop here, 5MB
+								max)
+							</em>
+						</>
 					)}
 				</StyledDragDropDiv>
 
@@ -90,11 +94,10 @@ const LibraryCreateForm = () => {
 };
 
 const formSubmit = async (formData, navigate, acceptedFiles) => {
-	console.log('acceptedFiles', acceptedFiles[0]);
-	console.log('formData', formData);
 	const formats = formData.formats.map(format => ({ id: v4(), name: format }));
 
-	const libraryData = { ...formData, formats, photo: acceptedFiles[0] };
+	const libraryData = { ...formData, formats, mainImage: acceptedFiles[0] };
+	console.log('libraryData', libraryData);
 
 	await createData(URLS.API_LIBRARY, libraryData);
 

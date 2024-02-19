@@ -16,9 +16,15 @@ export const SIDENAV_ITEMS = [
 		subMenus: [
 			{
 				id: v4(),
-				name: 'create',
+				name: 'new user',
 				icon: '',
 				path: '/dashboard/users/new-user'
+			},
+			{
+				id: v4(),
+				name: 'List',
+				icon: '',
+				path: '/dashboard/users'
 			}
 		]
 	},

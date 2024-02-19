@@ -4,7 +4,7 @@ import { URLS } from '../../../constants/urls';
 import { getAllData } from '../../../utils/api/common.api';
 import { StyledGrid } from './styles';
 
-const LibraryItemList = () => {
+const LibraryItemListPage = () => {
 	const [items, setItems] = useState([]);
 
 	useEffect(() => {
@@ -26,7 +26,6 @@ const LibraryItemList = () => {
 const getAllItems = async setItems => {
 	const allItems = await getAllData(URLS.API_LIBRARY);
 	setItems(allItems);
-
 };
 
-export default LibraryItemList;
+export default LibraryItemListPage;

@@ -9,6 +9,12 @@ export const getAllData = async url => {
 	return data;
 };
 
+export const getData = async url => {
+	const data = await fetchData(url, {
+		method: METHODS.GET
+	});
+	return data;
+};
 
 export const createData = async (url, body = {}) => {
 	const data = await fetchData(url, {
@@ -18,6 +24,7 @@ export const createData = async (url, body = {}) => {
 	});
 	return data;
 };
+
 
 export const updateData = async (url, body = {}) => {
 	const data = await fetchData(url, {

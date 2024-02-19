@@ -32,7 +32,7 @@ const UserScheme = mongoose.Schema(
 			type: Boolean
 		},
 
-		role: {
+		roles: {
 			type: Array,
 			required: true
 		},

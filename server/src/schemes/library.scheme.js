@@ -30,7 +30,8 @@ const LibraryScheme = mongoose.Schema(
 			type: String
 		},
 		mainImage: {
-			type: String
+			type: String,
+			// defaultValue:'https://res.cloudinary.com/dssqr01no/image/upload/v1708349240/z3jyfjglwlahqsxdalp6.svg'
 		},
 		galleryImages: {
 			type: Array
