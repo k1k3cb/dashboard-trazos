@@ -1,40 +1,42 @@
-import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { LIBRARY_ITEMS_FORMATS } from '../../constants/library-items-format';
 import { URLS } from '../../constants/urls';
 import { createData } from '../../utils/api/common.api';
 
+import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { v4 } from 'uuid';
 import { StyledDragDropDiv } from './styles';
 
 const LibraryCreateForm = () => {
-	const [libraryItem, setLibraryItem] = useState({});
-
 	const onDrop = useCallback(acceptedFiles => {
-		console.log('acceptedFiles', acceptedFiles[0]);
+		console.log('acceptedFiles', acceptedFiles);
 	}, []);
 	const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-		useDropzone({ onDrop });
+		useDropzone({ onDrop, maxSize: 5 * 1024 * 1024 });
+
 	const {
 		handleSubmit,
-		register
+		register,
+		watch
 
 		// formState: { errors }
-	} = useForm();
+	} = useForm({
+		defaultValues: { mainImage: 'public/assets/images/no-image-available.svg' }
+	});
 	const navigate = useNavigate();
 
 	return (
 		<form
-			onSubmit={handleSubmit(data =>
-				formSubmit(data, navigate, setLibraryItem, acceptedFiles)
+			onSubmit={handleSubmit(formData =>
+				formSubmit(formData, navigate, acceptedFiles)
 			)}
 		>
 			<div>
 				<label htmlFor='title'>Título:</label>
 				<input
 					type='text'
-					name='title'
 					id='title'
 					{...register('title', {
 						required: true
@@ -46,22 +48,20 @@ const LibraryCreateForm = () => {
 				<label htmlFor='author'>Autor/compositor:</label>
 				<input
 					type='text'
-					name='author'
 					id='author'
 					{...register('author', { required: true })}
 				/>
 			</div>
 
 			<div>
-				<label>Formato:</label>
+				<label>Formatos:</label>
 				{LIBRARY_ITEMS_FORMATS.map(format => (
 					<div key={format.id}>
 						<input
 							type='checkbox'
 							id={format.id}
-							name='format'
 							value={format.name}
-							{...register('format', { required: true })}
+							{...register('formats', { required: true })}
 						/>
 						<label htmlFor={format.id}>{format.name}</label>
 					</div>
@@ -70,28 +70,35 @@ const LibraryCreateForm = () => {
 			<div>
 				<label>Imagen principal:</label>
 				<StyledDragDropDiv {...getRootProps()}>
-					<input {...getInputProps()} />
-
-					<p>Selecciona o arrastra un archivo aquí</p>
+					<input {...getInputProps()} {...register('mainImage')} />
+					{isDragActive ? (
+						<p>Drop the files here ...</p>
+					) : (
+						<p>Selecciona o arrastra un archivo aquí</p>
+					)}
 				</StyledDragDropDiv>
-				
+
 				{acceptedFiles[0] && (
 					<img src={URL.createObjectURL(acceptedFiles[0])} alt='' />
 				)}
 			</div>
 
 			<button type='submit'>Crear</button>
+			<pre>{JSON.stringify(watch(), null, 2)}</pre>
 		</form>
 	);
 };
 
-const formSubmit = async (data, navigate, setLibraryItem, acceptedFiles) => {
-	console.log('data', data);
-	// const libraryData = { ...data };
-	const LibraryItems = await createData(URLS.API_LIBRARY, { ...data });
+const formSubmit = async (formData, navigate, acceptedFiles) => {
+	console.log('acceptedFiles', acceptedFiles[0]);
+	console.log('formData', formData);
+	const formats = formData.formats.map(format => ({ id: v4(), name: format }));
 
-	setLibraryItem(LibraryItems);
-	navigate('/dashboard/library/items');
+	const libraryData = { ...formData, formats, photo: acceptedFiles[0] };
+
+	await createData(URLS.API_LIBRARY, libraryData);
+
+	navigate('/dashboard/library');
 };
 
 export default LibraryCreateForm;

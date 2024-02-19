@@ -4,12 +4,12 @@ import LibraryCreateForm from '../../../components/library-create-form/LibraryCr
 
 const LibraryNewItem = () => {
 	return (
-		<main>
+		<>
 			<h3>New Item</h3>
 			<CardBody>
 				<LibraryCreateForm />
 			</CardBody>
-		</main>
+		</>
 	);
 };
 

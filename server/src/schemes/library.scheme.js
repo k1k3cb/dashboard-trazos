@@ -21,16 +21,16 @@ const LibraryScheme = mongoose.Schema(
 			trim: true
 		},
 
-		format: {
+		formats: {
 			type: Array,
 			required: true
 		},
+		
 		difficulty: {
 			type: String
 		},
 		mainImage: {
-			type: String,
-			default: 'public/assets/images/no-image-available.svg'
+			type: String
 		},
 		galleryImages: {
 			type: Array

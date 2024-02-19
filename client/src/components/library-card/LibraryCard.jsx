@@ -9,30 +9,30 @@ import {
 	StyledRightColumn
 } from './styles';
 
-const LibraryCard = () => {
+const LibraryCard = ({ ...item }) => {
+	const { title, author, arrangement, mainImage, formats } = item;
+	console.log('formats', formats);
 	return (
 		<StyledCard>
 			<StyledLeftColumn>
-				<StyledImg
-					src='https://musicsheetcovers.s3.eu-west-3.amazonaws.com/couv53/668/HD0010111668.jpg'
-					alt=''
-				/>
+				<StyledImg src={mainImage} alt='' />
 			</StyledLeftColumn>
 			<StyledRightColumn>
 				<StyledAuthorDiv>
-					<h5>Autor</h5>
-					<h6>Arreglista</h6>
+					<h5>{author}</h5>
+					{arrangement && <h6>{arrangement}</h6>}
 				</StyledAuthorDiv>
 
-				<h4>LA LA LAND</h4>
+				<h4>{title}</h4>
 
 				<StyledDesc>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sit.
 				</StyledDesc>
-				<div>
-					<StyledCategory>Papel</StyledCategory>
-					<StyledCategory> Digital</StyledCategory>
-				</div>
+
+				{formats.map(format => (
+					<StyledCategory key={format.id}>{format.name}</StyledCategory>
+				))}
+
 				<Link to=''>Ver</Link>
 			</StyledRightColumn>
 		</StyledCard>

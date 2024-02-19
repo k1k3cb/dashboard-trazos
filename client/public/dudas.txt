@@ -2,8 +2,13 @@ border color active input log in
 
 li/span en aside menu
 
-importaciones format /../../../../../../
+imports en el back, como los promise
 
+password required default scheme
+
+userController.createUser  datos pasados
+
+uso nickname o email para el login
 
 
 

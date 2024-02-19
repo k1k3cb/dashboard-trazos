@@ -18,7 +18,7 @@ export const SIDENAV_ITEMS = [
 				id: v4(),
 				name: 'create',
 				icon: '',
-				path: ''
+				path: '/dashboard/users/new-user'
 			}
 		]
 	},
@@ -38,7 +38,7 @@ export const SIDENAV_ITEMS = [
 				id: v4(),
 				name: 'List',
 				icon: '',
-				path: '/dashboard/library/items'
+				path: '/dashboard/library'
 			},
 			{
 				id: v4(),
