@@ -7,6 +7,7 @@ import { createData } from '../../utils/api/common.api';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { v4 } from 'uuid';
+import { DEFAULT_IMAGE } from '../../constants/images';
 import { StyledDragDropDiv } from './styles';
 
 const LibraryCreateForm = () => {
@@ -68,7 +69,7 @@ const LibraryCreateForm = () => {
 			<div>
 				<label>Imagen principal:</label>
 				<StyledDragDropDiv {...getRootProps()}>
-					<input {...getInputProps()} {...register('mainImage')} />
+					<input name='photo' {...getInputProps()} {...register('mainImage')} />
 					{isDragActive ? (
 						<p>Drop the files here ...</p>
 					) : (
@@ -93,15 +94,37 @@ const LibraryCreateForm = () => {
 	);
 };
 
-const formSubmit = async (formData, navigate, acceptedFiles) => {
-	const formats = formData.formats.map(format => ({ id: v4(), name: format }));
+const formSubmit = async (data, navigate, acceptedFiles) => {
+	const formats = data.formats.map(format => ({ id: v4(), name: format }));
 
-	const libraryData = { ...formData, formats, mainImage: acceptedFiles[0] };
+	const file = acceptedFiles[0] || DEFAULT_IMAGE;
+
+	// console.log('data', data);
+	const fileBase64 = await convertFileToBase64(file);
+
+	const libraryData = { ...data, formats, mainImage: fileBase64 };
+
 	console.log('libraryData', libraryData);
+
+	// console.log('libraryData', libraryData);
 
 	await createData(URLS.API_LIBRARY, libraryData);
 
 	navigate('/dashboard/library');
+};
+const convertFileToBase64 = file => {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+
+		reader.onload = () => {
+			resolve(reader.result.split(',')[1]);
+		};
+
+		reader.onerror = error => {
+			reject(error);
+		};
+	});
 };
 
 export default LibraryCreateForm;

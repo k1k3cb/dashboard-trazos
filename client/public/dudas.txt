@@ -11,9 +11,8 @@ userController.createUser  datos pasados
 uso nickname o email para el login
 
 
-links buttons ItemDetails
 
 
-diferencia getAllData getData de la api
 
 
+si modifico el texto de un campo de los roles.... chao, mejor crearlo en bd??

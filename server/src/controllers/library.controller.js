@@ -31,37 +31,25 @@ libraryController.getItemById = async (req, res) => {
 };
 
 // Crear un item nuevo
+
 libraryController.createItem = async (req, res) => {
+	let restultUpload;
 	// subir imágenes
-	console.log(req.files);
+	console.log(req.body);
+
 	try {
-		if (!req.files || Object.keys(req.files).length === 0) {
-			return res.status(400).send({ error: 'No files were uploaded.' });
-		}
+		restultUpload = await cloudinary.uploader.upload(
+			`data:image/jpg;base64,${req.body.mainImage}`
+		);
 
-		const photo = req.files.mainImage;
-
-		const uploadPath = path.join(__dirname, '../uploads', photo.name);
-
-		await photo.mv(uploadPath);
-
-		const nameForCloudinary = path.parse(photo.name).name;
-
-		const restultUpload = await cloudinary.uploader.upload(uploadPath, {
-			public_id: nameForCloudinary
-		});
-
-		console.log('restultUpload',restultUpload)
-
-		fsPromises.unlink(uploadPath);
-
-		res.status(201).send({ url: restultUpload.secure_url });
+		console.log('restultUpload', restultUpload);
+		
 	} catch (error) {
 		console.error('Error uploading file:', error);
 		res.status(500).send(error.message || 'Internal Server Error');
 	}
 
-	//crear item
+	// crear item
 	const {
 		title,
 		author,
@@ -69,10 +57,9 @@ libraryController.createItem = async (req, res) => {
 		editorial,
 		formats,
 		difficulty,
-		mainImage,
 		galleryImages
 	} = req.body;
-	if (!title || !author || !formats) {
+	if (!title || !author || formats.length === 0) {
 		return res.status(400).send({ error: 'Bad request.' });
 	}
 
@@ -84,7 +71,7 @@ libraryController.createItem = async (req, res) => {
 			editorial,
 			formats,
 			difficulty,
-			mainImage:restultUpload,
+			mainImage: restultUpload,
 			galleryImages
 		});
 

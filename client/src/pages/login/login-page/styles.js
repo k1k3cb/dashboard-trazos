@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
 	align-items: center;
 	flex-direction: column;
 	height: 100vh;
-	margin: -20px 0 50px;
+	
 `;
 
 export const StyledLoginCard = styled.div`

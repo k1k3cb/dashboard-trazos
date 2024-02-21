@@ -1,4 +1,5 @@
 const path = require('path');
+const bcrypt = require('bcrypt');
 const UserModel = require('../models/user.model');
 
 const fsPromises = require('fs/promises');
@@ -46,8 +47,8 @@ userController.createUser = async (req, res) => {
 
 		await newUser.save();
 
-		const allUsers  = await UserModel.find();
-		return res.status(200).send(allUsers );
+		const allUsers = await UserModel.find();
+		return res.status(200).send(allUsers);
 	} catch (err) {
 		return res.status(500).send({ error: 'Error reading database.' + err });
 	}
@@ -55,6 +56,7 @@ userController.createUser = async (req, res) => {
 
 userController.updateUser = async (req, res) => {
 	const { id } = req.params;
+	const { password } = req.body;
 	try {
 		const user = await UserModel.findById(id);
 
@@ -62,7 +64,11 @@ userController.updateUser = async (req, res) => {
 			return res.status(409).send({ error: 'User not Exists' });
 		}
 
-		await UserModel.updateOne({ _id: id }, { $set: { ...req.body } });
+		// Generar un hash de la contraseña
+		const saltRounds = 10; // Número de rondas de sal para la encriptación
+		const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+		await UserModel.updateOne({ _id: id }, { $set: { ...req.body,password:hashedPassword,firstLogin:false } });
 
 		const allUsers = await UserModel.find();
 		return res.status(200).send(allUsers);

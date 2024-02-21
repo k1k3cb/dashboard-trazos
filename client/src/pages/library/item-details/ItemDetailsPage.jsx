@@ -22,7 +22,7 @@ const ItemDetailsPage = () => {
 		<>
 			<Link to='/dashboard/library'>Home</Link>
 			<Link to={`/dashboard/library/edit-item/${id}`}>
-				<button>Edit</button>
+				Edit
 			</Link>
 
 			<button onClick={() => deleteItem(id, navigate)}>Delete</button>

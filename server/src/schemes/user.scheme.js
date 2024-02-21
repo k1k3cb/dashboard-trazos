@@ -18,15 +18,12 @@ const UserScheme = mongoose.Schema(
 		},
 		username: {
 			type: String,
-			// required: true,
 			unique: true,
 			trim: true
 		},
 		password: {
 			type: String,
-			// required: true,
-			default: '123'
-			// crearla por defecto y cambiarla el primer inicio sesion
+			
 		},
 		active: {
 			type: Boolean
@@ -38,7 +35,7 @@ const UserScheme = mongoose.Schema(
 		},
 		firstLogin: {
 			type: Boolean,
-			default: false
+			default: true
 		}
 	},
 	{
@@ -46,5 +43,13 @@ const UserScheme = mongoose.Schema(
 		collection: 'users'
 	}
 );
+// Define el gancho (hook) pre-save para establecer el valor predeterminado del username
+UserScheme.pre('save', function (next) {
+	if (!this.username) {
+		// Si el username no está definido, establece su valor como el mismo que el email
+		this.username = this.email;
+	}
+	next();
+});
 
 module.exports = UserScheme;

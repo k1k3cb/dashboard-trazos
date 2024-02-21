@@ -11,7 +11,7 @@ import {
 
 const LibraryCard = ({ ...item }) => {
 	const { _id, title, author, arrangement, mainImage, formats } = item;
-	console.log('item', item);
+	
 	return (
 		<StyledCard>
 			<StyledLeftColumn>

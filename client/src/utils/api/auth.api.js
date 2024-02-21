@@ -38,6 +38,7 @@ export const loginRequest = async (body, setData) => {
 
 		const data = await response.json();
 		setData(data);
+		return data;
 	} catch (error) {
 		console.error('Error en la solicitud de inicio de sesión:', error);
 		throw error;

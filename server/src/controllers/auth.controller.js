@@ -7,10 +7,24 @@ const TOKEN_SECRET = require('../config/token.config');
 const authController = {};
 
 authController.login = async (req, res) => {
-	try {
-		const { email, password } = req.body;
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	let redirect = '/dashboard';
 
-		const userFound = await UserModel.findOne({ email });
+	try {
+		const { credential, password } = req.body;
+
+		const userCredentialEmail = emailRegex.test(credential);
+		let userFound;
+
+		if (userCredentialEmail) {
+			userFound = await UserModel.findOne({ email: credential });
+		} else {
+			userFound = await UserModel.findOne({ username: credential });
+		}
+
+		if (password === '123') {
+			redirect = '/login-first-use';
+		}
 
 		if (!userFound)
 			return res.status(400).send({
@@ -30,14 +44,15 @@ authController.login = async (req, res) => {
 			username: userFound.username
 		});
 
-		return res.cookie('token', token).send({
+		res.cookie('token', token);
+		return res.send({
 			id: userFound._id,
 			name: userFound.name,
 			username: userFound.username,
 			email: userFound.email,
 			active: userFound.active,
-			image: userFound.image,
-			color: userFound.color
+			roles: userFound.roles,
+			redirect
 		});
 	} catch (error) {
 		return res.status(500).send({ error: error.message });
@@ -45,7 +60,7 @@ authController.login = async (req, res) => {
 };
 
 authController.register = async (req, res) => {
-	// const { name, username, email, password } = req.body;
+	const { name, email, password, roles } = req.body;
 
 	try {
 		// Generar un hash de la contraseña
@@ -53,10 +68,10 @@ authController.register = async (req, res) => {
 		const hashedPassword = await bcrypt.hash(password, saltRounds);
 
 		const newUser = new UserModel({
-			// name,
-			// username,
-			// email,
-			// active: false,
+			name,
+			email,
+			roles,
+			active: true,
 			password: hashedPassword // Guarda la contraseña encriptada en la base de datos
 		});
 
@@ -86,8 +101,7 @@ authController.verifyToken = async (req, res) => {
 			username: userFound.username,
 			email: userFound.email,
 			active: userFound.active,
-			image: userFound.image,
-			color: userFound.color
+			roles: userFound.roles
 		});
 	} catch (err) {
 		return res.status(500).json({ error: err });
