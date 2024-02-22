@@ -74,7 +74,7 @@ const handleSubmit = async (
 	setUserData
 ) => {
 	event.preventDefault();
-	console.log('loginData', loginData);
+	
 	try {
 		const data = await loginRequest(loginData, setUserData);
 		navigate(data.redirect);

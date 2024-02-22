@@ -8,7 +8,7 @@ import {
 const SidebarCategory = ({ category }) => {
 	
 	const { id } = category;
-	const { title, icon, path, subMenus } = category.section;
+	const { title, icon, path, subMenus } = category;
 	const linkContent = (
 		<>
 			<img src={icon} alt='' />
@@ -19,9 +19,9 @@ const SidebarCategory = ({ category }) => {
 	);
 	return (
 		<StyledLi key={id}>
-			{path ? (
-				<StyledLinkTitle to={path}>{linkContent}</StyledLinkTitle>
-			) : (
+			{path && <StyledLinkTitle to={path}>{linkContent}</StyledLinkTitle>}
+
+			{!path && (
 				<>
 					<StyledSectionSubmenu>
 						{linkContent}

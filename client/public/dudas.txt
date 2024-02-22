@@ -5,9 +5,12 @@ li/span en aside menu
 
 
 
-subir node a server
+subir node a server - netlifly
 mensajes en el login inicial desde el back
-añadir el forgot passwordd si no es firtsLogin
+añadir el forgot password si no es firtsLogin
 
 
-si modifico el texto de un campo de los roles.... chao, mejor crearlo en bd??
+
+
+
+

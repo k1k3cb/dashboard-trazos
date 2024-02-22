@@ -1,6 +1,7 @@
 import { v4 } from 'uuid';
 
 const DASHBOARD = {
+	id: v4(),
 	title: 'Dashboard',
 	icon: '/assets/icons/OutlinedDashBoard.svg',
 	path: '/dashboard',
@@ -8,6 +9,7 @@ const DASHBOARD = {
 };
 
 const USERS = {
+	id: v4(),
 	title: 'Usuarios',
 	icon: '/assets/icons/User.svg',
 	path: '',
@@ -28,6 +30,7 @@ const USERS = {
 };
 
 const LIBRARY = {
+	id: v4(),
 	title: 'Biblioteca',
 	icon: '/assets/icons/Library.svg',
 	path: '',
@@ -54,6 +57,7 @@ const LIBRARY = {
 };
 
 const INVENTARY = {
+	id: v4(),
 	title: 'Inventario',
 	icon: '/assets/icons/Inventory.svg',
 	path: '',
@@ -68,6 +72,7 @@ const INVENTARY = {
 };
 
 const CALENDAR = {
+	id: v4(),
 	title: 'Calendario',
 	icon: '/assets/icons/Calendar.svg',
 	path: '',
@@ -82,6 +87,7 @@ const CALENDAR = {
 };
 
 const TASKS = {
+	id: v4(),
 	title: 'Tareas',
 	icon: '/assets/icons/Tasks.svg',
 	path: '',
@@ -95,29 +101,11 @@ const TASKS = {
 	]
 };
 
-export const SIDENAV_ITEMS = [
-	{
-		id: v4(),
-		section: DASHBOARD
-	},
-	{
-		id: v4(),
-		section:USERS
-	},
-	{
-		id: v4(),
-		section:LIBRARY
-	},
-	{
-		id: v4(),
-		section:INVENTARY
-	},
-	{
-		id: v4(),
-		section:CALENDAR
-	},
-	{
-		id: v4(),
-		section:TASKS
-	}
-];
+export const SIDENAV_ITEMS = {
+	DASHBOARD,
+	USERS,
+	LIBRARY,
+	INVENTARY,
+	CALENDAR,
+	TASKS
+};

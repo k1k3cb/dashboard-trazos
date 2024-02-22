@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
-import { USER_ROLES } from '../../../constants/roles';
+import { USER_ROLES_LIST } from '../../../constants/roles';
 import { ROUTES } from '../../../constants/routes';
 import { registerRequest } from '../../../utils/api/auth.api';
 
@@ -69,7 +69,7 @@ const NewUser = () => {
 
 				<div>
 					<label>Roles:</label>
-					{USER_ROLES.map(rol => (
+					{USER_ROLES_LIST.map(rol => (
 						<div key={rol.id}>
 							<input
 								type='checkbox'
