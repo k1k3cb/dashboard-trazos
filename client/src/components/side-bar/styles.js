@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { SIZE } from '../../styles/sizes';
 
@@ -14,25 +13,8 @@ export const StyleTitle = styled.span`
 	display: flex;
 	gap: 1rem;
 `;
-export const StyledLinkTitle = styled(Link)`
-	display: flex;
-	gap: 1rem;
-`;
-
-export const StyledTitleDiv = styled.div`
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	width: 80%;
-`;
-
-export const StyledLi = styled.li`
-	margin-bottom: 20px;
-`;
 
 export const StyledSubMenuUl = styled.ul`
 	padding-left: 50px;
 	list-style: circle;
 `;
-
-

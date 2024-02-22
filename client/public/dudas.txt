@@ -2,17 +2,12 @@ border color active input log in
 
 li/span en aside menu
 
-imports en el back, como los promise
-
-password required default scheme
-
-userController.createUser  datos pasados
-
-uso nickname o email para el login
 
 
 
-
+subir node a server
+mensajes en el login inicial desde el back
+añadir el forgot passwordd si no es firtsLogin
 
 
 si modifico el texto de un campo de los roles.... chao, mejor crearlo en bd??

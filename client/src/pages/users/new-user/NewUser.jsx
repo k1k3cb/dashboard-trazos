@@ -1,35 +1,29 @@
-import { useContext, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { USER_ROLES } from '../../../constants/roles';
 import { ROUTES } from '../../../constants/routes';
-import { AuthContext } from '../../../contexts/AuthContext';
 import { registerRequest } from '../../../utils/api/auth.api';
 
 const NewUser = () => {
 	const [isAdminChecked, setIsAdminChecked] = useState(false);
-	
-	const { userData } = useContext(AuthContext);
+
 	const {
 		handleSubmit,
 		register,
 		watch,
-		// formState: { errors }
+		formState: { errors }
 	} = useForm({});
 	const navigate = useNavigate();
-
+	const password = useRef({});
+	password.current = watch('password', '');
 	return (
 		<>
 			<h3>New User</h3>
 			<form
 				onSubmit={handleSubmit(formData =>
-					formSubmit(
-						formData,
-						navigate,
-						handleAdminCheckboxChange,
-					
-					)
+					formSubmit(formData, navigate, handleAdminCheckboxChange)
 				)}
 			>
 				<div>
@@ -64,10 +58,14 @@ const NewUser = () => {
 					<input
 						type='password'
 						id='confirm-password'
-						{...register('confirmPassword' )}
+						{...register('confirmPassword', {
+							required: true,
+							validate: value =>
+								value === password.current || 'Las contraseñas no coinciden'
+						})}
 					/>
 				</div>
-			
+				{errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
 
 				<div>
 					<label>Roles:</label>
